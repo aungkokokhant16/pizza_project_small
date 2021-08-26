@@ -3,7 +3,7 @@
 
 @section("content")
     <div class="container mt-4">
-
+        <h1>{{$pizzas[0]['username']}}</h1>
     <table class="table table-hover">
         <thead>
           <tr>
@@ -18,26 +18,22 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>9.9$</td>
-            <td><button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modalLoginForm">Edit Order</button> </td>
-            <td><button class="btn btn-sm btn-success">Order Complete</button> </td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>@fat</td>
-            <td>10$</td>
-            <td><button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modalLoginForm">Edit Order</button> </td>
-            <td><button class="btn btn-sm btn-success">Order Complete</button> </td>
-          </tr>
+            @foreach ($pizzas as $pizza )
+            <tr>
+                <th scope="row">{{$pizza['id']}}</th>
+                <th scope="row">{{$pizza['username']}}</th>
+                <th scope="row">{{$pizza['pizza_name']}}</th>
+                <th scope="row">{{$pizza['topping']}}</th>
+                <th scope="row">{{$pizza['sauce']}}</th>
+                <th scope="row">{{$pizza['price']}}$</th>
+
+
+                <td><button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modalLoginForm">Edit Order</button> </td>
+                <td><button class="btn btn-sm btn-success">Order Complete</button> </td>
+              </tr>
+
+            @endforeach
+
 
         </tbody>
 

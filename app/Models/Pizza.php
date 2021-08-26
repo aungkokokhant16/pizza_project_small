@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Pizza extends Model
 {
     use HasFactory;
-    protected $fillable = ['username','pizzaname','topping','sauce','price'];
+    protected $fillable = ['username','pizza_name','topping','sauce','price'];
 }
