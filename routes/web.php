@@ -15,6 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PizzaController::class,'index'])->name("home");
+//create
 Route::post('/',[PizzaController::class,'insert'])->name("insert");
-
+//read
 Route::get('/pizzas', [PizzaController::class,'pizza'] )->name("pizza");
+//delete
+// Route::get('/pizzas/{id}',function($id){
+//     return $id;
+// })->name("delete");
+Route::get('/pizzas/{id}',[PizzaController::class,"delete"])->name("delete");
+//edit form route
+Route::get('/pizzas/edit/{id}',[PizzaController::class,"edit"])->name("edit");

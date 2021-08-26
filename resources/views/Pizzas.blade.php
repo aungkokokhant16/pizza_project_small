@@ -3,7 +3,11 @@
 
 @section("content")
     <div class="container mt-4">
-        <h1>{{$pizzas[0]['username']}}</h1>
+        @if (Session('delete'))
+            <div class="alert alert-danger mt-3 mb-3">
+                {{Session("delete")}}
+            </div>
+        @endif
     <table class="table table-hover">
         <thead>
           <tr>
@@ -28,8 +32,8 @@
                 <th scope="row">{{$pizza['price']}}$</th>
 
 
-                <td><button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modalLoginForm">Edit Order</button> </td>
-                <td><button class="btn btn-sm btn-success">Order Complete</button> </td>
+                <td><a class="btn btn-sm btn-warning" href="{{route("edit",$pizza->id)}}">Edit Order</a> </td>
+                <td><a class="btn btn-sm btn-success" href="{{route("delete",$pizza->id)}}">Order Complete</a></td>
               </tr>
 
             @endforeach

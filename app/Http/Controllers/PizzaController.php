@@ -12,13 +12,15 @@ class PizzaController extends Controller
     }
 
     function pizza() {
+        //fake data come from database
+        // $pizzas = [
+        //     ["id"=>1,"username"=>"Aung","pizza_name"=>"chicken tiken","topping"=>"salad","sauce"=>"tomato","price"=>6.6],
+        //     ["id"=>2,"username"=>"Ko","pizza_name"=>"Pork tiken","topping"=>"gg","sauce"=>"ff","price"=>4.6],
+        //     ["id"=>3,"username"=>"Ko","pizza_name"=>"Bacon tiken","topping"=>"ss","sauce"=>"gg","price"=>7.6],
+        //     ["id"=>4,"username"=>"Khant","pizza_name"=>"Cheese Porn tiken","topping"=>"ss","sauce"=>"gg","price"=>11.6],
+        // ];
 
-        $pizzas = [
-            ["id"=>1,"username"=>"Aung","pizza_name"=>"chicken tiken","topping"=>"salad","sauce"=>"tomato","price"=>6.6],
-            ["id"=>2,"username"=>"Ko","pizza_name"=>"Pork tiken","topping"=>"gg","sauce"=>"ff","price"=>4.6],
-            ["id"=>3,"username"=>"Ko","pizza_name"=>"Bacon tiken","topping"=>"ss","sauce"=>"gg","price"=>7.6],
-            ["id"=>4,"username"=>"Khant","pizza_name"=>"Cheese Porn tiken","topping"=>"ss","sauce"=>"gg","price"=>11.6],
-        ];
+        $pizzas = Pizza::all();//database htae ka data twy ko phan
 
         return view('Pizzas',['pizzas'=>$pizzas]);
     }
@@ -51,5 +53,24 @@ class PizzaController extends Controller
         }else{
             return back()->withErrors($validation);
         }
+    }
+
+    //data delete
+    function delete($id){
+        // return $id;
+        //find data by id
+            $delete_pizza_data = Pizza::find($id);
+            // return $delete_pizza_data;
+            $delete_pizza_data->delete();
+            return back()->with("delete","$delete_pizza_data->username order is deleted");
+        //delete that data
+    }
+
+    //edit data
+
+    function edit($id){
+        $pizza=Pizza::find($id);
+        return view("Edit",['pizza'=>$pizza]);
+        // return $pizza;
     }
 }
