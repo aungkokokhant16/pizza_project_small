@@ -26,3 +26,5 @@ Route::get('/pizzas', [PizzaController::class,'pizza'] )->name("pizza");
 Route::get('/pizzas/{id}',[PizzaController::class,"delete"])->name("delete");
 //edit form route
 Route::get('/pizzas/edit/{id}',[PizzaController::class,"edit"])->name("edit");
+//update form route
+Route::post('/pizzas/update/{id}', [PizzaController::class,"update"])->name("update");

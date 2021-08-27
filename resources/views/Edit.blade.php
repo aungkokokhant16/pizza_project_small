@@ -18,7 +18,7 @@
     <div class="card-body px-lg-5 pt-0">
 
         <!-- Form -->
-        <form class="text-center"  action="{{route('insert')}}" method="POST">
+        <form class="text-center"  action="{{route('update',$pizza->id)}}" method="POST">
             @csrf
             <!-- User Name -->
             <div class="md-form mt-4">
@@ -66,7 +66,7 @@
 
 
             <!-- Order up button -->
-            <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Update</button>
+            <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit" >Update</button>
 
             <!-- Social register -->
             <p>or sign up with:</p>
